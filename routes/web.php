@@ -33,7 +33,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::get('/clear', function() {
+    $exitCode = Artisan::call('route:cache');
+    $exitCode = Artisan::call('optimize');
+     
+      return 'ok';
+ });
 
 Route::post('/clear-session', function () {
     session()->forget('Add');
